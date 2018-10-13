@@ -8,4 +8,4 @@ Sometimes it may fail to produce results as telematics.oasa.gr does not like to 
 If this case occurs, simply rerun the script couple of times.
 
 Working:
-- Json with all the stops for easier access.
+- Json containing all the stops for easier access.
