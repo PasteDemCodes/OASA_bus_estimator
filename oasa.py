@@ -5,6 +5,8 @@ import time
 
 
 started_time = time.time()
+
+# Change these to your liking.
 station_id = '280066'
 station_name = 'ΓΑΖΙΑΣ'
 
