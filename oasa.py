@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
 
+
 class Estimator:
 
     started_time = time.time()
@@ -19,9 +20,9 @@ class Estimator:
     def __str__(self):
 
         return ('\nEstimator Info\n' +
-                ('Time Initiated    : %s.\n' % self.started_time) +
-                ('Bus Station given : %s.\n' % self.station_name) +
-                ('Bus Station id    : %s.\n' % self.station_id))
+                ('Bus Station given: %s.\n' % self.station_name) +
+                ('Bus Station id   : %s.\n' % self.station_id) +
+                ('Station URL      : %s\n' % self.url))
 
 
     def run(self):
@@ -36,6 +37,7 @@ class Estimator:
         driver.get(self.url)
 
         soup = BeautifulSoup(driver.page_source, 'html.parser')
+
         '''
         Example of Data am looking for
         
@@ -62,6 +64,7 @@ class Estimator:
         <div>ANO KORYDALLOS - ST. METRO AIGALEO : ANO KORYDALLOS - ST. METRO AIGALEO</div><b>Arrival in <span class="arrivalsAr">
         </span></b></div></div></li></ul>
         '''
+
         bus_names = []
         bus_arrivals = []
 
@@ -71,7 +74,7 @@ class Estimator:
             for span in ul.find_all('span'):
                 bus_arrivals.append(span.text)
 
-        print('Data Analyzed. Time: %ds.' % (time.time() - self.started_time))
+        print('Data Analyzed. Time    : %ds.' % (time.time() - self.started_time))
 
         for counter, bus in enumerate(bus_names):
             print('%s estimated arrival in: %s' % (bus, bus_arrivals[counter]))
